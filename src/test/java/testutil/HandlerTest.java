@@ -1,7 +1,7 @@
 package testutil;
 
-import client.Character;
-import client.Client;
+import br.com.spherams.client.Character;
+import br.com.spherams.client.Client;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mock;
 

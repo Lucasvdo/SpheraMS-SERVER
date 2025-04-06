@@ -3,43 +3,44 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cosmic-maplestory</groupId>
-    <artifactId>Cosmic</artifactId>
+    <groupId>br.com.spherams</groupId>
+    <artifactId>Sphera</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Cosmic</name>
+    <name>SpheraMS</name>
     <description>Server emulator for Global MapleStory version 83</description>
-    <url>https://github.com/P0nk/Cosmic</url>
-    <inceptionYear>2021</inceptionYear>
+    <url>https://github.com/Lucasvdo/SpheraMS-SERVER</url>
+    <inceptionYear>2025</inceptionYear>
 
     <developers>
         <developer>
-            <name>Ponk</name>
-            <email>ponkcode@gmail.com</email>
-            <url>https://github.com/P0nk</url>
+            <name>Lucas</name>
+            <email>lucasvalerio@live.com</email>
+            <url>https://github.com/Lucasvdo</url>
             <roles>
                 <role>maintainer</role>
                 <role>developer</role>
             </roles>
             <properties>
-                <discord>ponkcode</discord>
+                <discord>bzone</discord>
             </properties>
         </developer>
     </developers>
 
     <scm>
-        <connection>scm:git:https://github.com/P0nk/Cosmic.git</connection>
-        <developerConnection>scm:git:https://github.com/P0nk/Cosmic.git</developerConnection>
-        <url>https://github.com/P0nk/Cosmic</url>
+        <connection>https://github.com/Lucasvdo/SpheraMS-SERVER.git</connection>
+        <developerConnection>scm:git:https://github.com/Lucasvdo/SpheraMS-SERVER.git</developerConnection>
+        <url>https://github.com/Lucasvdo/SpheraMS-SERVER</url>
     </scm>
+
     <issueManagement>
         <system>GitHub Issues</system>
-        <url>https://github.com/P0nk/Cosmic/issues</url>
+        <url>https://github.com/Lucasvdo/SpheraMS-SERVER/issues</url>
     </issueManagement>
     <ciManagement>
         <system>GitHub Actions</system>
-        <url>https://github.com/P0nk/Cosmic/actions</url>
+        <url>https://github.com/Lucasvdo/SpheraMS-SERVER/actions</url>
     </ciManagement>
 
     <properties>
@@ -48,7 +49,7 @@
         <java.version>21</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <mainClass>net.server.Server</mainClass>
+        <mainClass>br.com.spherams.net.server.Server</mainClass>
 
         <!-- Maven plugins -->
         <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version> <!-- For running unit tests -->
@@ -188,6 +189,11 @@
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.h3xstream.findsecbugs</groupId>
+            <artifactId>findsecbugs-plugin</artifactId>
+            <version>1.12.0</version>
+        </dependency>
 
     </dependencies>
 
@@ -241,6 +247,92 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <configLocation>google_checks.xml</configLocation>
+                    <encoding>UTF-8</encoding>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>true</failsOnError>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>4.8.3.0</version>
+                <configuration>
+                    <effort>Max</effort>
+                    <threshold>Low</threshold>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.21.2</version>
+                <configuration>
+                    <failOnViolation>true</failOnViolation>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.11</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>br.com.spherams.net.server.Server</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -1,5 +1,6 @@
 package tools;
 
+import br.com.spherams.tools.HexTool;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;

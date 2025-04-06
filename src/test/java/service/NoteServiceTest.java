@@ -1,8 +1,9 @@
 package service;
 
-import database.note.NoteDao;
-import model.Note;
-import net.packet.out.ShowNotesPacket;
+import br.com.spherams.database.note.NoteDao;
+import br.com.spherams.model.Note;
+import br.com.spherams.net.packet.out.ShowNotesPacket;
+import br.com.spherams.service.NoteService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;

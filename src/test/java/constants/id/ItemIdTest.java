@@ -1,5 +1,6 @@
 package constants.id;
 
+import br.com.spherams.constants.id.ItemId;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

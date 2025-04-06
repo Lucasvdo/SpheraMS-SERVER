@@ -1,6 +1,7 @@
 package client.processor.stat;
 
-import client.Job;
+import br.com.spherams.client.Job;
+import br.com.spherams.client.processor.stat.AssignAPProcessor;
 import org.junit.jupiter.api.Test;
 
 import java.util.function.BiFunction;

@@ -1,5 +1,8 @@
 package server.life;
 
+import br.com.spherams.server.life.MobSkill;
+import br.com.spherams.server.life.MobSkillFactory;
+import br.com.spherams.server.life.MobSkillType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;

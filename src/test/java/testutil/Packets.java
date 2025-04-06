@@ -1,10 +1,10 @@
 package testutil;
 
 import io.netty.buffer.Unpooled;
-import net.packet.ByteBufInPacket;
-import net.packet.ByteBufOutPacket;
-import net.packet.InPacket;
-import net.packet.OutPacket;
+import br.com.spherams.net.packet.ByteBufInPacket;
+import br.com.spherams.net.packet.ByteBufOutPacket;
+import br.com.spherams.net.packet.InPacket;
+import br.com.spherams.net.packet.OutPacket;
 
 import java.util.function.Consumer;
 

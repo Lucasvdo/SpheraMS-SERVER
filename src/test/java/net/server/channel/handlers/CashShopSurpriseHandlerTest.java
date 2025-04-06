@@ -1,18 +1,19 @@
 package net.server.channel.handlers;
 
-import client.inventory.Item;
-import constants.id.ItemId;
-import net.packet.InPacket;
+import br.com.spherams.client.inventory.Item;
+import br.com.spherams.constants.id.ItemId;
+import br.com.spherams.net.packet.InPacket;
+import br.com.spherams.net.server.channel.handlers.CashShopSurpriseHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import server.CashShop;
+import br.com.spherams.server.CashShop;
 import testutil.HandlerTest;
 import testutil.Items;
 import testutil.Packets;
-import tools.PacketCreator;
+import br.com.spherams.tools.PacketCreator;
 
 import java.util.Optional;
 

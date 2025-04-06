@@ -1,6 +1,6 @@
 package testutil;
 
-import client.Character;
+import br.com.spherams.client.Character;
 import org.mockito.Mockito;
 
 import static org.mockito.Mockito.when;

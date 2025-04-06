@@ -1,6 +1,6 @@
 package testutil;
 
-import database.DaoException;
+import br.com.spherams.database.DaoException;
 
 public class AnyValues {
 

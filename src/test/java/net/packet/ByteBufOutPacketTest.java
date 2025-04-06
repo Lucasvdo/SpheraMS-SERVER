@@ -1,8 +1,10 @@
 package net.packet;
 
+import br.com.spherams.net.packet.ByteBufOutPacket;
+import br.com.spherams.net.packet.OutPacket;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-import net.opcodes.SendOpcode;
+import br.com.spherams.net.opcodes.SendOpcode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

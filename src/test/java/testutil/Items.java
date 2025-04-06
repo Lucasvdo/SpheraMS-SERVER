@@ -1,6 +1,6 @@
 package testutil;
 
-import client.inventory.Item;
+import br.com.spherams.client.inventory.Item;
 
 public class Items {
 

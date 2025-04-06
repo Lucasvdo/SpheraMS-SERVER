@@ -78,23 +78,23 @@
             <AppenderRef ref="PacketConsole"/>
             <AppenderRef ref="File"/>
         </Logger>
-        <Logger name="net.packet.logging.MonitoredChrLogger" level="info" additivity="false">
+        <Logger name="br.com.spherams.net.packet.logging.MonitoredChrLogger" level="info" additivity="false">
             <AppenderRef ref="MonitoredPacketFile"/>
         </Logger>
 
-        <Logger name="server.Trade" level="info" additivity="false">
+        <Logger name="br.com.spherams.server.Trade" level="info" additivity="false">
             <AppenderRef ref="TradeFile"/>
         </Logger>
-        <Logger name="server.expeditions.Expedition" level="info" additivity="false">
+        <Logger name="br.com.spherams.server.expeditions.Expedition" level="info" additivity="false">
             <AppenderRef ref="ExpeditionFile"/>
         </Logger>
-        <Logger name="server.ChatLogger" level="info" additivity="false">
+        <Logger name="br.com.spherams.server.ChatLogger" level="info" additivity="false">
             <AppenderRef ref="ChatFile"/>
         </Logger>
-        <Logger name="server.gachapon.Gachapon" level="info" additivity="false">
+        <Logger name="br.com.spherams.server.gachapon.Gachapon" level="info" additivity="false">
             <AppenderRef ref="GachaponFile"/>
         </Logger>
-        <Logger name="server.MapleLeafLogger" level="info" additivity="false">
+        <Logger name="br.com.spherams.server.MapleLeafLogger" level="info" additivity="false">
             <AppenderRef ref="MapleLeafFile"/>
         </Logger>
 

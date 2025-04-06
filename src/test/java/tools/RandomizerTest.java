@@ -1,5 +1,6 @@
 package tools;
 
+import br.com.spherams.tools.Randomizer;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;

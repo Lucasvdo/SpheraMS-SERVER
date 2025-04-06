@@ -1,9 +1,12 @@
 package net.packet;
 
-import constants.string.CharsetConstants;
+import br.com.spherams.constants.string.CharsetConstants;
+import br.com.spherams.net.packet.ByteBufInPacket;
+import br.com.spherams.net.packet.InPacket;
+import br.com.spherams.net.packet.OutPacket;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-import net.opcodes.SendOpcode;
+import br.com.spherams.net.opcodes.SendOpcode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
