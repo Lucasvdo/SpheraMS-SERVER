@@ -11,7 +11,7 @@ var arena;
 var arenaName;
 var type;
 var map;
-const ExpeditionType = Java.type('server.expeditions.ExpeditionType');
+const ExpeditionType = Java.type('br.com.spherams.server.expeditions.ExpeditionType');
 var exped = ExpeditionType.ARIANT;
 var exped1 = ExpeditionType.ARIANT1;
 var exped2 = ExpeditionType.ARIANT2;

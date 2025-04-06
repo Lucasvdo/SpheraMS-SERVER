@@ -265,7 +265,7 @@ function monsterKilled(mob, eim) {
         }
 
         var mapObj = mob.getMap();
-        const Item = Java.type('client.inventory.Item');
+        const Item = Java.type('br.com.spherams.client.inventory.Item');
         var itemObj = new Item(4001007, 0, 1);
         var dropper = eim.getPlayers().get(0);
 

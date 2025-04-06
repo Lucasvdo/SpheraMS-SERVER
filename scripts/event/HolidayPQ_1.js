@@ -285,7 +285,7 @@ function monsterKilled(mob, eim) {
         }
 
         var mapObj = mob.getMap();
-        const Item = Java.type('client.inventory.Item');
+        const Item = Java.type('br.com.spherams.client.inventory.Item');
         var itemObj = new Item((forceDrop || Math.random() < 0.77) ? 4032094 : 4032095, 0, 1);   // 77% chance of not fake
         var dropper = eim.getPlayers().get(0);
 
@@ -316,7 +316,7 @@ function snowmanEvolve(eim, curLevel) {
     eim.setIntProperty("snowmanLevel", curLevel + 2);   // increment by 2 to decrement by 1 on friendlyKilled
     mapobj.killMonster(snowman, null, false, 2);
 
-    const LifeFactory = Java.type('server.life.LifeFactory');
+    const LifeFactory = Java.type('br.com.spherams.server.life.LifeFactory');
     const Point = Java.type('java.awt.Point');
     var snowman = LifeFactory.getMonster(9400317 + (5 * difficulty) + curLevel);
     mapobj.spawnMonsterOnGroundBelow(snowman, new Point(-180, 15));

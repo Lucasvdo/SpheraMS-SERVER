@@ -129,7 +129,7 @@ function insidePqAction(mode, type, selection) {
             }
         }
     } else if (status == 1) {
-        const LifeFactory = Java.type('server.life.LifeFactory');
+        const LifeFactory = Java.type('br.com.spherams.server.life.LifeFactory');
         const Point = Java.type('java.awt.Point');
 
         if (stg == -1) {
