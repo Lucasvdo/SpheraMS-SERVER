@@ -37,6 +37,7 @@ import br.com.spherams.constants.inventory.ItemConstants;
 import br.com.spherams.constants.net.OpcodeConstants;
 import br.com.spherams.constants.net.ServerConstants;
 import br.com.spherams.database.note.NoteDao;
+import br.com.spherams.infrastructure.dependency.DependencyInitializer;
 import br.com.spherams.net.ChannelDependencies;
 import br.com.spherams.net.PacketProcessor;
 import br.com.spherams.net.netty.LoginServer;
@@ -92,7 +93,6 @@ public class Server {
         }
         return instance;
     }
-
     private static final Set<Integer> activeFly = new HashSet<>();
     private static final Map<Integer, Integer> couponRates = new HashMap<>(30);
     private static final List<Integer> activeCoupons = new LinkedList<>();
@@ -835,6 +835,8 @@ public class Server {
     public void init() {
         Instant beforeInit = Instant.now();
         log.info("SpheraMS v{} starting up.", ServerConstants.VERSION);
+
+        DependencyInitializer.initialize();
 
         if (YamlConfig.config.server.SHUTDOWNHOOK) {
             Runtime.getRuntime().addShutdownHook(new Thread(shutdown(false)));
