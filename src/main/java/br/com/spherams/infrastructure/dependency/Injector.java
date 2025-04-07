@@ -14,9 +14,14 @@ public class Injector {
     public static <T> T get(Class<T> clazz) {
         Object instance = registry.get(clazz);
         if (instance == null) {
+            System.out.println(getRegistry().toString());
             throw new IllegalStateException("Nenhuma instância registrada para " + clazz.getName());
         }
         return clazz.cast(instance);
+    }
+
+    public static Map<Class<?>, Object> getRegistry() {
+        return registry;
     }
 
     public static void clear() {

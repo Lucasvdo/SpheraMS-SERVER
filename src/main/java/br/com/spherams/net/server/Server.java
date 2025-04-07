@@ -85,8 +85,8 @@ import static java.util.concurrent.TimeUnit.*;
 
 public class Server {
     private static final Logger log = LoggerFactory.getLogger(Server.class);
-    private static Server instance = null;
 
+    private static Server instance = null;
     public static Server getInstance() {
         if (instance == null) {
             instance = new Server();
@@ -836,8 +836,6 @@ public class Server {
         Instant beforeInit = Instant.now();
         log.info("SpheraMS v{} starting up.", ServerConstants.VERSION);
 
-        DependencyInitializer.initialize();
-
         if (YamlConfig.config.server.SHUTDOWNHOOK) {
             Runtime.getRuntime().addShutdownHook(new Thread(shutdown(false)));
         }
@@ -845,6 +843,10 @@ public class Server {
         if (!DatabaseConnection.initializeConnectionPool()) {
             throw new IllegalStateException("Failed to initiate a connection to the database");
         }
+
+        if(!DependencyInitializer.initialize()){
+            throw new IllegalStateException("Failed to initialize the dependency dependency");
+        };
 
         channelDependencies = registerChannelDependencies();
 
@@ -972,11 +974,6 @@ public class Server {
         timeLeft = getTimeLeftForNextDay();
         ExpeditionBossLog.resetBossLogTable();
         tMan.register(new BossLogTask(), DAYS.toMillis(1), timeLeft);
-    }
-
-    public static void main(String[] args) {
-        System.setProperty("polyglot.engine.WarnInterpreterOnly", "false"); // Mute GraalVM warning: "The polyglot context is using an implementation that does not support runtime compilation."
-        Server.getInstance().init();
     }
 
     public Properties getSubnetInfo() {
