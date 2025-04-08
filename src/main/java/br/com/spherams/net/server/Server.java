@@ -21,6 +21,7 @@
  */
 package br.com.spherams.net.server;
 
+import br.com.spherams.application.service.FamilyService;
 import br.com.spherams.client.Character;
 import br.com.spherams.client.Client;
 import br.com.spherams.client.Family;
@@ -38,6 +39,7 @@ import br.com.spherams.constants.net.OpcodeConstants;
 import br.com.spherams.constants.net.ServerConstants;
 import br.com.spherams.database.note.NoteDao;
 import br.com.spherams.infrastructure.dependency.DependencyInitializer;
+import br.com.spherams.infrastructure.dependency.Injector;
 import br.com.spherams.net.ChannelDependencies;
 import br.com.spherams.net.PacketProcessor;
 import br.com.spherams.net.netty.LoginServer;
@@ -85,7 +87,7 @@ import static java.util.concurrent.TimeUnit.*;
 
 public class Server {
     private static final Logger log = LoggerFactory.getLogger(Server.class);
-
+    private final FamilyService familyService = Injector.get(FamilyService.class);
     private static Server instance = null;
     public static Server getInstance() {
         if (instance == null) {
@@ -133,6 +135,7 @@ public class Server {
     private volatile boolean availableDeveloperRoom = false;
     private boolean online = false;
     public static long uptime = System.currentTimeMillis();
+
 
     private Server() {
         ReadWriteLock worldLock = new ReentrantReadWriteLock(true);
@@ -833,8 +836,16 @@ public class Server {
     }
 
     public void init() {
+
         Instant beforeInit = Instant.now();
         log.info("SpheraMS v{} starting up.", ServerConstants.VERSION);
+        if (YamlConfig.config.server.SHUTDOWNHOOK) {
+            Runtime.getRuntime().addShutdownHook(new Thread(shutdown(false)));
+        }
+
+        if (!DatabaseConnection.initializeConnectionPool()) {
+            throw new IllegalStateException("Failed to initiate a connection to the database");
+        }
 
         if (YamlConfig.config.server.SHUTDOWNHOOK) {
             Runtime.getRuntime().addShutdownHook(new Thread(shutdown(false)));
@@ -890,9 +901,7 @@ public class Server {
             loadPlayerNpcMapStepFromDb();
 
             if (YamlConfig.config.server.USE_FAMILY_SYSTEM) {
-                try (Connection con = DatabaseConnection.getConnection()) {
-                    Family.loadAllFamilies(con);
-                }
+                familyService.loadAllFamilies();
             }
         } catch (Exception e) {
             log.error("[SEVERE] Syntax error in 'world.ini'.", e); //For those who get errors
